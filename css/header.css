@@ -1,0 +1,119 @@
+/* css/header.css */
+header {
+    display: flex;
+    align-items: center;
+    padding: 8px 15px;
+    border-radius: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    background: linear-gradient(to right, #b4b99c, #809177);
+    justify-content: flex-start;
+    box-sizing: border-box;
+}
+
+.menu-icon {
+    display: inline-block;
+    cursor: pointer;
+    margin-right: 8px;
+    width: 20px;
+    height: 32px;
+    background: none !important;
+    background-color: transparent !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    border: none !important;
+}
+
+.bar {
+    width: 20px;
+    height: 2px;
+    background-color: #6e7a6c;
+    margin: 3px 0;
+    display: block;
+}
+
+header .controls {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+header .controls button.guide-button {
+    background-color: #9bb6a1;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    width: 70px;
+    height: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: 15px;
+    cursor: pointer;
+    font-size: 0.8em;
+    padding: 6px 10px;
+    font-family: "Libre Baskerville", serif;
+}
+
+header h1 {
+    color: #ded9ba;
+    margin-bottom: 0;
+    font-size: 1.3em;
+    font-family: "Libre Baskerville", serif;
+    text-shadow: 1px 1px #6c7a6b;
+    font-style: italic;
+    margin-right: 15px;
+}
+
+header .controls button.refresh-button {
+    background: none;
+    border: none;
+    color: #9bb6a1;
+    font-size: 1.4em;
+    font-weight: bold;
+    margin-right: 15px;
+    cursor: pointer;
+    line-height: 1;
+}
+
+header .controls button.clear-button {
+    background: none;
+    border: none;
+    color: #516258;
+    font-size: 1.4em;
+    font-weight: bold;
+    cursor: pointer;
+    line-height: 1;
+    margin-right: 8px;
+}
+
+.algorithm-menu-overlay {
+    display: none; /* Add this line to hide the menu initially */
+    position: absolute;
+    top: 60px; /* Adjust as needed based on your header height */
+    left: 10px; /* Adjust as needed */
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+.algorithm-menu-overlay ul {
+    list-style: none;
+    padding: 10px 0;
+    margin: 0;
+}
+
+.algorithm-menu-overlay ul li {
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.algorithm-menu-overlay ul li:hover {
+    background-color: #eee;
+}

@@ -1,0 +1,41 @@
+/* css/general.css */
+body {
+    font-family: sans-serif;
+    margin: 0;
+    background-color: #54655b;
+}
+
+.main {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    align-items: flex-start;
+}
+
+.left-column {
+    flex: 0 0 auto;
+    margin-right: 20px;
+    width: fit-content;
+}
+
+.right-column {
+    flex: 1 1 auto;
+}
+
+button {
+    padding: 8px 15px;
+    border: 1px solid #a6a6a6;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+.clear-button {
+    background-color: #e74c3c; /* Red */
+    color: white;
+    border: none;
+}

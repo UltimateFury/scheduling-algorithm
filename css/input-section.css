@@ -1,0 +1,164 @@
+.input-section {
+    margin-top: 15px;
+    width: fit-content;
+    margin-left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.input-section h2 {
+    color: #dfdabb;
+    margin-bottom: 10px;
+    font-size: 1.3em;
+    text-align: left;
+    font-family: 'League Spartan', sans-serif !important;
+    font-weight: 700;
+}
+
+.input-table-container {
+    border: 1px solid #b8d393;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: white;
+    margin-bottom: 10px;
+    width: 460px;      /* Set a fixed width, or use min-width for flexibility */
+    min-width: 460px;  /* Ensures the table doesn't shrink below this width */
+    max-width: 100%;   /* Prevents it from overflowing the parent */
+}
+
+.input-table-container table {
+    width: 100%;       /* Make the table fill the container */
+    border-collapse: collapse;
+    background-color: #3b7b7a;
+}
+
+.input-table-container th,
+.input-table-container td {
+    border: 1px solid #b8d393;
+    padding: 8px;
+    text-align: center;
+}
+
+.input-table-container th {
+    background-color: #3b7b7a;
+    color: #d9d9bb; /* White text for better readability */
+    font-weight: bold;
+    font-family: 'Libre Baskerville', serif !important;
+}
+
+.input-table-container td {
+    color: #3b7b7a;
+}
+
+.input-table-container th:nth-child(1), /* Job */
+.input-table-container td:nth-child(1) {
+    width: 80px;
+}
+
+.input-table-container th:nth-child(2), /* Arrival Time */
+.input-table-container td:nth-child(2) {
+    width: 100px;
+}
+
+.input-table-container th:nth-child(3), /* Burst Time */
+.input-table-container td:nth-child(3) {
+    width: 90px;
+}
+
+.input-table-container th:nth-child(4), /* Priority */
+.input-table-container td:nth-child(4) {
+    width: 80px;
+}
+
+.input-table-container input[type="text"],
+.input-table-container input[type="number"] {
+    width: 70%;
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: center;
+    box-sizing: border-box;
+    font-family: 'League Spartan', sans-serif !important;
+    font-weight: 700;
+}
+
+/* Style the table footer row to ensure its content is centered */
+.input-table-container tfoot .add-job-row td {
+    border: none;
+    display: flex;
+    justify-content: flex-start; /* Start alignment as a base */
+    padding: 10px;
+}
+
+.add-job-controls {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    margin-left: 650%; /* Adjust this percentage to move it further right */
+}
+
+/* Style the add job button */
+.add-job-button {
+    background-color: #9bb6a1;
+    color: #d9d9bb;
+    border: none;
+    border-radius: 5px;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 1em;
+    margin-right: 5px; /* Space between button and text */
+}
+
+.subtract-job-button{
+    background-color: #c94b4b;
+    color: #d9d9bb;
+    border: none;
+    border-radius: 5px;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 1em;
+    margin-right: 5px; /* Space between button and text */
+}
+
+/* Style the "Add Another Job?" text */
+.add-job-text {
+    font-size: 0.9em;
+    color: #d9d9bb;
+    font-family: 'Libre Baskerville', serif !important;
+}
+
+.display-button {
+    background-color: #c94b4b;
+    color: #d1d5b8;
+    border-radius: 20px;
+    padding: 10px 25px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+    font-family: 'League Spartan', sans-serif !important;
+    font-weight: 700;
+    margin-left: 20%;
+}
+
+.delete-button{
+    background-color: #c94b4b;
+    color: #d1d5b8;
+    border-radius: 20px;
+    padding: 10px 25px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+    font-family: 'League Spartan', sans-serif !important;
+    font-weight: 700;
+}

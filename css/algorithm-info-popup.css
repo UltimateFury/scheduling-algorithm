@@ -1,0 +1,55 @@
+.algorithm-info-popup {
+    display: none; /* Hide by default */
+    background-color: #9bb6a1 !important;
+    /* Reduce padding to make popup shorter */
+    padding: 12px 20px; /* <-- Make these numbers smaller for a shorter popup */
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+    color: #222;
+}
+
+#popup-algorithm-name {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 1.2em; /* <-- Reduce this if you want the title smaller */
+    margin-bottom: 0.3em;
+}
+
+#popup-algorithm-description {
+    font-family: 'League Spartan', sans-serif;
+    font-size: 1em; /* <-- Reduce this if you want the description smaller */
+    margin-bottom: 0.7em;
+}
+
+.guide-popup {
+    position: fixed;
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #f9f9f9;
+    color: #222;
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+    padding: 24px 32px;
+    z-index: 1000;
+    max-width: 500px;
+    width: 90%;
+    font-family: 'Libre Baskerville', serif;
+    max-height: 70vh;           /* Limit height to 70% of viewport */
+    overflow-y: auto;           /* Enable vertical scrolling */
+    text-align: justify;
+}
+.guide-popup h2 {
+    margin-top: 0;
+    font-family: 'Libre Baskerville', serif;
+}
+.guide-popup .guide-content {
+    font-family: 'League Spartan', sans-serif;
+    font-size: 1em;
+}
+.guide-popup ul {
+    margin-left: 1em;
+    margin-bottom: 1em;
+}
+.guide-popup li {
+    margin-bottom: 0.7em;
+}

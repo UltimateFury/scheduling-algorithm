@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CPU Scheduling Algorithm (Guades)</title>
+    <link rel="stylesheet" href="css/general.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/algorithm-selection.css">
+    <link rel="stylesheet" href="css/input-section.css">
+    <link rel="stylesheet" href="css/chosen-algorithm.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700&display=swap">
+    <link rel="stylesheet" href="css/algorithm-menu.css">
+    <link rel="stylesheet" href="css/algorithm-info-popup.css">
+    <link rel="stylesheet" href="css/timeline.css">
+    <link rel="stylesheet" href="css/gantt-chart.css">
+    <link rel="stylesheet" href="css/results-section.css">
+</head>
+<body>
+    <header>
+        <div class="menu-icon">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <div class="algorithm-menu-overlay">
+            <ul>
+                <li data-algorithm="fcfs">FCFS</li>
+                <li data-algorithm="sjf">SJF</li>
+                <li data-algorithm="npp">NPP</li>
+                <li data-algorithm="preemptive-priority">Preemptive Priority</li>
+            </ul>
+        </div>
+        <div class="algorithm-info-popup">
+            <h2 id="popup-algorithm-name"></h2>
+            <p id="popup-algorithm-description"></p>
+        </div>
+        <h1>CPU Scheduling Algorithm</h1>
+        <div class="controls">
+            <button class="guide-button">Guide</button>
+            <button class="refresh-button">↻</button>
+            <button class="clear-button">✕</button>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="left-column">
+            <section class="algorithm-selection-container">
+                <div class="oblong-title">
+                    Select a Scheduling Algorithm:
+                </div>
+                <div class="radio-button-box">
+                    <label><input type="radio" name="algorithm" value="fcfs"> FCFS</label>
+                    <label><input type="radio" name="algorithm" value="sjf"> SJF</label>
+                    <label><input type="radio" name="algorithm" value="npp"> NPP</label>
+                    <label><input type="radio" name="algorithm" value="preemptive-priority"> Preemptive Priority</label>
+                </div>
+            </section>
+
+            <section class="input-section">
+                <h2>Insert the following information:</h2>
+                <div class="input-table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Job</th>
+                                <th>Arrival Time</th>
+                                <th>Burst Time</th>
+                                <th>Priority</th>
+                            </tr>
+                        </thead>
+                        <tbody id="job-table-body">
+                            <tr>
+                                <td><input type="text" class="job-name" value="P1"></td>
+                                <td><input type="number" class="arrival-time" value="0"></td>
+                                <td><input type="number" class="burst-time" value="5"></td>
+                                <td><input type="number" class="priority" value="1"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" class="job-name" value="P2"></td>
+                                <td><input type="number" class="arrival-time" value="1"></td>
+                                <td><input type="number" class="burst-time" value="3"></td>
+                                <td><input type="number" class="priority" value="3"></td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr class="add-job-row">
+                                <td colspan="4" style="display: flex; justify-content: center; border: none; padding: 10px;">
+                                    <div class="add-job-controls">
+                                        <button id="subtract-job-button" class="subtract-job-button">-</button>
+                                        <button id="add-job-button" class="add-job-button">+</button>
+                                        <span class="add-job-text">Remove/Add Job?</span>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+
+                <button class="display-button">Click to Display Algorithm!</button>
+            </section>
+        </div>
+
+        <div class="right-column">
+            <section class="output-section" style="display: none;">
+                <h2>Chosen Algorithm: <span id="chosen-algorithm-name"></span></h2>
+                <div class="visualization">
+                    <div class="timeline-container">
+                        <h3>Timeline</h3>
+                        <div class="timeline"></div>
+                    </div>
+                    <div class="gantt-chart-container">
+                        <h3>Gantt Chart</h3>
+                        <div class="gantt-chart"></div>
+                    </div>
+                </div>
+
+                <div class="results-boxes">
+                    <div class="turnaround-time-box">
+                        <h3>Turn-around Time</h3>
+                        <hr class="results-divider">
+                        <div id="turnaround-times"></div>
+                    </div>
+                    <div class="waiting-time-box">
+                        <h3>Waiting Time</h3>
+                        <hr class="results-divider">
+                        <div id="waiting-times"></div>
+                    </div>
+                </div>
+                <!-- Add this for CPU Utilization -->
+                <div class="cpu-utilization">
+                    <h3>% of CPU Utilization</h3>
+                    <div id="cpu-utilization-value"></div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <div class="guide-popup" style="display: none;">
+        <h2>Guide</h2>
+        <div class="guide-content">
+            <h3>Overview</h3>
+            <p>This tool visualizes CPU scheduling algorithms. You can add jobs, select an algorithm, and view the results in the timeline and Gantt chart.</p>
+            <h3>Sections</h3>
+            <ul>
+                <li>
+                    <strong>Algorithm Selection:</strong>
+                    <br>
+                    Use the radio buttons to select a scheduling algorithm (FCFS, SJF, NPP, Preemptive Priority). Click the three lines (menu) for algorithm info.
+                </li>
+                <li>
+                    <strong>Job Table:</strong>
+                    <br>
+                    Enter job names, arrival times, burst times, and priorities. Add more jobs with the green "+" button. Delete jobs with the red "-" button. All numerical fields must be non-negative.
+                </li>
+                <li>
+                    <strong>Guide Button:</strong>
+                    <br>
+                    Opens this guide popup.
+                </li>
+                <li>
+                    <strong>Refresh Button (↻):</strong>
+                    <br>
+                    Resets the job table to its initial state and clears results.
+                </li>
+                <li>
+                    <strong>Clear Button (✕):</strong>
+                    <br>
+                    Closes any open popups, including this guide.
+                </li>
+                <li>
+                    <strong>Display Button:</strong>
+                    <br>
+                    After entering jobs and selecting an algorithm, click this to visualize the results.
+                </li>
+                <li>
+                    <strong>Timeline & Gantt Chart:</strong>
+                    <br>
+                    Shows the order and timing of job execution based on the selected algorithm.
+                </li>
+                <li>
+                    <strong>Results Section:</strong>
+                    <br>
+                    Displays turnaround time, waiting time, and CPU utilization for your jobs.
+                </li>
+            </ul>
+            <h3>Tips</h3>
+            <ul>
+                <li>Click the three-line menu for algorithm descriptions.</li>
+                <li>All job fields must be filled before displaying results.</li>
+                <li>Use the X button in the header to close this guide.</li>
+            </ul>
+        </div>
+    </div>
+
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
