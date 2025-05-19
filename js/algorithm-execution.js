@@ -75,7 +75,10 @@ export function setupAlgorithmExecution() {
                 } else {
                     const nextArrivalTime = nonPreemptiveJobs.find(job => !job.isCompleted)?.arrivalTime;
                     if (nextArrivalTime !== undefined && currentTime < nextArrivalTime) {
-                        ganttChartData.push({ job: 'I', start: currentTime, end: nextArrivalTime, duration: nextArrivalTime - currentTime });
+                        // Add individual idle segments of duration 1
+                        for (let t = currentTime; t < nextArrivalTime; t++) {
+                            ganttChartData.push({ job: 'I', start: t, end: t + 1, duration: 1 });
+                        }
                         currentTime = nextArrivalTime;
                     } else {
                         currentTime++;
@@ -120,7 +123,10 @@ export function setupAlgorithmExecution() {
                 } else {
                     const nextArrivalTime = nonPreemptiveJobs.find(job => !job.isCompleted)?.arrivalTime;
                     if (nextArrivalTime !== undefined && currentTime < nextArrivalTime) {
-                        ganttChartData.push({ job: 'I', start: currentTime, end: nextArrivalTime, duration: nextArrivalTime - currentTime });
+                        // Add individual idle segments of duration 1
+                        for (let t = currentTime; t < nextArrivalTime; t++) {
+                            ganttChartData.push({ job: 'I', start: t, end: t + 1, duration: 1 });
+                        }
                         currentTime = nextArrivalTime;
                     } else {
                         currentTime++;
@@ -209,21 +215,12 @@ export function setupAlgorithmExecution() {
                     localCurrentTime++;
                 } else if (completedCount < jobList.length) {
                     // CPU idle only if jobs remain
-                    if (
-                        ganttChartData.length === 0 ||
-                        ganttChartData[ganttChartData.length - 1].job !== 'I'
-                    ) {
-                        lastSwitchTime = localCurrentTime;
-                        ganttChartData.push({
-                            job: 'I',
-                            start: localCurrentTime,
-                            end: localCurrentTime + 1,
-                            duration: 1
-                        });
-                    } else {
-                        ganttChartData[ganttChartData.length - 1].end++;
-                        ganttChartData[ganttChartData.length - 1].duration++;
-                    }
+                    ganttChartData.push({
+                        job: 'I',
+                        start: localCurrentTime,
+                        end: localCurrentTime + 1,
+                        duration: 1
+                    });
                     localCurrentTime++;
                 }
             }
