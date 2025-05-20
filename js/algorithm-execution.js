@@ -394,7 +394,7 @@ function updateResultsDisplay(jobs, totalCompletionTime, totalBurstTime, ganttCh
 
     let solution = `
         <div class="cpu-util-formula" style="'Libre Baskerville', serif !important; font-size: 0.7em;">
-            <span>(${totalBurst} / ${denominatorString}) = ${totalBurst} / ${totalCompletionTime} = </span>
+            <span>(${totalBurst} / (${denominatorString})) = (${totalBurst} / ${totalCompletionTime}) * 100 = </span>
             <span class="result">${cpuUtil.toFixed(2)}%</span>
         </div>
     `;
